@@ -1,17 +1,17 @@
-/* MADE BY MARVIN FERWERDA 
-
-
-*/
-
-
-var mjversie = "1.2_1";
+/* 
+MarfFrameWork 1.2
+This is open-source, 
+Offical github: https://github.com/Marfjeh/MarfFrameWork
+LICENSE: GNU GENERAL PUBLIC LICENSE Version 2
+ */
+var mjversie = "1.2_2";
 var mjdate = "9-11-2015";
 
 // useragent Dectector
 var useragent = null;
 if(navigator.userAgent.indexOf("Chrome") != -1 ) 
 {
-    useragent = 'Chrome';
+    useragent = 'Chrome/Edge';
 }
 else if(navigator.userAgent.indexOf("Opera") != -1 )
 {
@@ -25,7 +25,7 @@ else if((navigator.userAgent.indexOf("MSIE") != -1 ) || (!!document.documentMode
 {
     useragent = 'Internet Explorer';
 }
-else if((navigator.userAgent.indexOf("Edge") != -1 ) || (!!document.documentMode == true )) //IF IE > 10
+else if((navigator.userAgent.indexOf("Edge") != -1 ) || (!!document.documentMode == true )) //Edge, but edge uses Chrome?
 {
     useragent = 'Microsoft Edge';
 }
@@ -37,11 +37,13 @@ else
 
 function log( tekst ) { console.log(tekst); }
 
-function GaNaarSite(URL){ window.location.href = URL; }
+function GoUrl(URL){ window.location.href = URL; }
 
-function overmij() { return("Deze pagina maakt gebruik van MarfFrameWork Reboot 2015! Versie: " + mjversie + " Versie Datum: " + mjdate); }
+function About() { return("This page uses MarfFrameWork Version: " + mjversie + " Versie date(DD-MM-YYYY): " + mjdate); }
 
-function gahomepagina() { // Ga naar default home pagina
+function goBack() { window.history.back(); }
+
+function GoHome() { // Ga naar default home pagina
     if (typeof window.home == 'function') { 
         window.home();
     } else if (document.all) { 
@@ -51,8 +53,7 @@ function gahomepagina() { // Ga naar default home pagina
     }
 }
 
-function vollescherm(element) { // vollescherm(document.documentElement); LETOP: alleen werkend met knopjes en links vanwege veiligheids redenen. 
-  log("Volledigsherm geopend.");
+function fullscreen(element) { // fullscreen(document.documentElement); Notice: this only works with user input such a button.
   if(element.requestFullscreen) {
     element.requestFullscreen();
   } else if(element.mozRequestFullScreen) {
@@ -66,7 +67,7 @@ function vollescherm(element) { // vollescherm(document.documentElement); LETOP:
 
 // **** PUSH API START ****
 
-function pushapitoestemming()
+function PushPermission()
 {
 	if (window.webkitNotifications.checkPermission() == 0) { // 0 is PERMISSION_ALLOWED
     log ("Push permissions granted");
@@ -87,27 +88,8 @@ function pushsupport()
 
 // **** PUSH API END ****
 
-function menubalk() // jquery verplicht!
-{
-      $(document).ready(function() {
-        var stickyNavTop = $('.nav').offset().top;
-        var stickyNav = function(){
-          var scrollTop = $(window).scrollTop();
-          if (scrollTop > stickyNavTop) { 
-              $('.nav').addClass('sticky');
-          } else {
-              $('.nav').removeClass('sticky'); 
-          }
-      };
-      stickyNav();
-      $(window).scroll(function() {
-        stickyNav();
-      });
-    });
-}
-
 /* Disabled for "securty risks"...
-function myIP()  { //Geef het ip van de client door middel van Xjax
+function myIP()  { //Get a Ip with Xjax.
     if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
     else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 
@@ -123,12 +105,8 @@ function myIP()  { //Geef het ip van de client door middel van Xjax
     return false;
 }
 */
-function goBack() {
-    window.history.back();
-}
 
-// smooth scrollen naar een id gebruik bijvoorbeeld <h1 id="one"> om te scrollen gebruik dan een link bijvoorbeeld <a href="#one">One</a> naar id one te scrollen
-// Deze code is geladen en hoef niet opgeroepen worden.
+// SmoothScrolling, this works with a element that has a ID like: <p id="one">. To scroll to that element you can use a hyperlink such as <a href="#one">Scroll to one</a> This needs jqeury!
 $(function() {
     $('a[href*=#]:not([href=#])').click(function() {
         if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
@@ -144,7 +122,7 @@ $(function() {
     });
 });
 
-function footer() { //Hierbij word jquary gebruikt om de footer beneden te houden, gebruik Id=footer om het gebruiken.
+function footer() { //This adds a footer that is always visible. use ID=footer. like: <div id=footer></div>. This needs jqeury.
 
     $(window).bind("load", function () {
 
@@ -178,7 +156,7 @@ function footer() { //Hierbij word jquary gebruikt om de footer beneden te houde
     });
 }
 
-function playmusic(file, soort) // playmusic("music.mp3", "mp3");
+function playmusic(file, soort) // playmusic("music.mp3", "mp3"); this is not done yet.
 {
 	undefined;
 }
