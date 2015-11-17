@@ -6,6 +6,7 @@ LICENSE: GNU GENERAL PUBLIC LICENSE Version 2
  */
 var mjversie = "1.2_3";
 var mjdate = "17-11-2015";
+var mjactive = 1;
 
 // useragent Dectector
 var useragent = null;
