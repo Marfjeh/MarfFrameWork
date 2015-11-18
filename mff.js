@@ -4,8 +4,8 @@ This is a open-source project,
 Offical github: https://github.com/Marfjeh/MarfFrameWork
 LICENSE: GNU GENERAL PUBLIC LICENSE Version 2
  */
-var mjversie = "1.2_3";
-var mjdate = "17-11-2015";
+var mjversie = "1.3";
+var mjdate = "18-11-2015";
 var mjactive = 1;
 
 // useragent Dectector
@@ -175,3 +175,36 @@ function timenow(format)
     var sec = currentDate.getSeconds();
     return (hour + format + mins + format + sec);
 }
+
+function addtoelement(div, text) // Add to ID Element. and keeping the existing text.
+{
+    var divvar = document.getElementById(div);
+    divvar.innerHTML = divvar.innerHTML + text;
+
+}
+function addtoelementln(div, text) // Add to ID Element. and keeping the existing text.
+{
+    var divvar = document.getElementById(div);
+    divvar.innerHTML = divvar.innerHTML + text + "<br>";
+
+}
+
+function settoelement(div, text)
+{
+    var divvar = document.getElementById(div);
+    divvar.innerHTML = text;
+}
+
+function clearelement(div) // clear te element.
+{
+    var divvar = document.getElementById(div);
+    divvar.innerHTML = "";
+}
+
+function delelement(div)
+{
+    var divvar = document.getElementById(div);
+    divvar.outerHTML = "";
+    delete divvar;
+}
+
