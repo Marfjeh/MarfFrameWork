@@ -4,35 +4,38 @@ This is a open-source project,
 Offical github: https://github.com/Marfjeh/MarfFrameWork
 LICENSE: GNU GENERAL PUBLIC LICENSE Version 2
  */
-var mjversie = "1.3";
-var mjdate = "18-11-2015";
+var mjversie = "1.3.1";
+var mjdate = "19-11-2015";
 var mjactive = 1;
 
 // useragent Dectector
-var useragent = null;
-if(navigator.userAgent.indexOf("Chrome") != -1 ) 
-{
-    useragent = 'Chrome/Edge';
-}
-else if(navigator.userAgent.indexOf("Opera") != -1 )
-{
-    useragent = 'Opera';
-}
-else if(navigator.userAgent.indexOf("Firefox") != -1 ) 
-{
-    useragent = 'Firefox';
-}
-else if((navigator.userAgent.indexOf("MSIE") != -1 ) || (!!document.documentMode == true )) //IF IE > 10
-{
-    useragent = 'Internet Explorer';
-}
-else if((navigator.userAgent.indexOf("Edge") != -1 ) || (!!document.documentMode == true )) //Edge, but edge uses Chrome?
-{
-    useragent = 'Microsoft Edge';
-}
-else 
-{
-    useragent =  '?';
+function useragent() {
+    var useragent = null;
+    if(navigator.userAgent.indexOf("Chrome") != -1 )
+    {
+        useragent = "Chrome/Edge";
+    }
+    else if(navigator.userAgent.indexOf("Opera") != -1 )
+    {
+        useragent = "Opera";
+    }
+    else if(navigator.userAgent.indexOf("Firefox") != -1 )
+    {
+        useragent = "Firefox";
+    }
+    else if((navigator.userAgent.indexOf("MSIE") != -1 ) || (!!document.documentMode == true )) //IF IE > 10
+    {
+        useragent = "Internet Explorer";
+    }
+    else if(navigator.userAgent.indexOf("AppleWebKit") != -1 )
+    {
+        useragent = "Safari";
+    }
+    else
+    {
+        useragent =  "?";
+    }
+    return (useragent);
 }
 // end
 
@@ -66,7 +69,7 @@ function fullscreen(element) { // fullscreen(document.documentElement); Notice: 
   }
 }
 
-// **** PUSH API START ****
+// **** PUSH API START **** WIP
 
 function PushPermission()
 {
@@ -90,7 +93,7 @@ function pushsupport()
 // **** PUSH API END ****
 
 
-function myIP()  { //Get a Ip with Xjax.
+function myIP()  { //Get a Ip with xml.
     if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
     else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 
@@ -158,7 +161,7 @@ function footer() { //This adds a footer that is always visible. use ID=footer. 
 function playmusic(file, soort) // playmusic("music.mp3", "mp3"); this is not done yet.
 { }
 
-function datenow(format)
+function datenow(format) // Returns Day Month year. Syntax: datenow("-"); returns as for example: 1-1-2015
 {
     var currentDate = new Date();
     var day = currentDate.getDate();
@@ -167,7 +170,7 @@ function datenow(format)
     return (day + format + month + format + year);
 }
 
-function timenow(format)
+function timenow(format) // Returns Hour minute and seconds. Syntax: timenow(":"); returns as for example: 12:00:00
 {
     var currentDate = new Date();
     var hour = currentDate.getHours();
@@ -207,4 +210,3 @@ function delelement(div)
     divvar.outerHTML = "";
     delete divvar;
 }
-
