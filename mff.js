@@ -1,11 +1,11 @@
 /* 
-MarfFrameWork 1.2
+MarfFrameWork 1.3.2
 This is a open-source project,
 Offical github: https://github.com/Marfjeh/MarfFrameWork
 LICENSE: GNU GENERAL PUBLIC LICENSE Version 2
  */
-var mjversie = "1.3.1";
-var mjdate = "19-11-2015";
+var mjversie = "1.3.2";
+var mjdate = "21-11-2015";
 var mjactive = 1;
 
 // useragent Dectector
@@ -39,7 +39,9 @@ function useragent() {
 }
 // end
 
-function log( tekst ) { console.log(tekst); }
+function log( tekst ) {
+    console.log("["+ datenow("-") + " " + timenow(":") +" | MarfFrameWork Log] "+tekst);
+}
 
 function GoUrl(URL){ window.location.href = URL; }
 
@@ -75,6 +77,7 @@ function PushPermission()
 {
 	if (window.webkitNotifications.checkPermission() == 0) { // 0 is PERMISSION_ALLOWED
     log ("Push permissions granted");
+        return true;
   } else {
     window.webkitNotifications.requestPermission();
   }
@@ -84,9 +87,11 @@ function pushsupport()
 {
 	if (window.webkitNotifications) {
  		log("Notifications are supported!");
+        return true;
 	}
 	else {
   		log("Notifications are not supported for this Browser/OS version yet.");
+        return false;
 	}
 }
 
@@ -94,7 +99,10 @@ function pushsupport()
 
 
 function myIP()  { //Get a Ip with xml.
-    if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
+
+    log("This feature is disabled for security reasons by browsers, external xmlhttp.send is marked unsafe by browsers.");
+    return false;
+   /* if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
     else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 
     xmlhttp.open("GET","http://api.hostip.info/get_html.php",false);
@@ -106,7 +114,7 @@ function myIP()  { //Get a Ip with xml.
         ipAddress = hostipInfo[i].split(":");
         if ( ipAddress[0] == "IP" ) return ipAddress[1];
     }
-    return false;
+    return false;*/
 }
 
 // SmoothScrolling, this works with a element that has a ID like: <p id="one">. To scroll to that element you can use a hyperlink such as <a href="#one">Scroll to one</a> This needs jqeury!
@@ -158,11 +166,19 @@ function footer() { //This adds a footer that is always visible. use ID=footer. 
 
     });
 }
-function playmusic(file, soort) // playmusic("music.mp3", "mp3"); this is not done yet.
-{ }
-
-function datenow(format) // Returns Day Month year. Syntax: datenow("-"); returns as for example: 1-1-2015
+function playmusic(file, type) // playmusic("music.mp3", "mp3"); This needs jquery!
 {
+    $("body").append("<audio autoplay id='audioplayer'> <source src='" + file + "' type='audio/"+ type + "'></audio>");
+    delelement("audioplayer");
+    return true;
+}
+
+function datenow(format) // Returns Day Month year. Syntax: datenow("-"); returns as for example: 1-1-2015 defaults: "-"
+{
+    if (format == null)
+    {
+        format = "-";
+    }
     var currentDate = new Date();
     var day = currentDate.getDate();
     var month = currentDate.getMonth() + 1;
@@ -170,8 +186,12 @@ function datenow(format) // Returns Day Month year. Syntax: datenow("-"); return
     return (day + format + month + format + year);
 }
 
-function timenow(format) // Returns Hour minute and seconds. Syntax: timenow(":"); returns as for example: 12:00:00
+function timenow(format) // Returns Hour minute and seconds. Syntax: timenow(":"); returns as for example: 12:00:00 defaults: ":"
 {
+    if (format == null)
+    {
+        format = ":";
+    }
     var currentDate = new Date();
     var hour = currentDate.getHours();
     var mins = currentDate.getMinutes();
