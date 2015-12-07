@@ -1,11 +1,11 @@
 /* 
-MarfFrameWork 1.3.2
+MarfFrameWork 1.2
 This is a open-source project,
 Offical github: https://github.com/Marfjeh/MarfFrameWork
 LICENSE: GNU GENERAL PUBLIC LICENSE Version 2
  */
-var mjversie = "1.3.2";
-var mjdate = "21-11-2015";
+var mjversie = "1.3.3";
+var mjdate = "7-12-2015";
 var mjactive = 1;
 
 // useragent Dectector
@@ -43,7 +43,7 @@ function log( tekst ) {
     console.log("["+ datenow("-") + " " + timenow(":") +" | MarfFrameWork Log] "+tekst);
 }
 
-function GoUrl(URL){ window.location.href = URL; }
+function goUrl(URL){ window.location.href = URL; }
 
 function About() { return("This page uses MarfFrameWork Version: " + mjversie + " Versie date(DD-MM-YYYY): " + mjdate); }
 
@@ -97,26 +97,6 @@ function pushsupport()
 
 // **** PUSH API END ****
 
-
-function myIP()  { //Get a Ip with xml.
-
-    log("This feature is disabled for security reasons by browsers, external xmlhttp.send is marked unsafe by browsers.");
-    return false;
-   /* if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
-    else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-
-    xmlhttp.open("GET","http://api.hostip.info/get_html.php",false);
-    xmlhttp.send();
-
-    hostipInfo = xmlhttp.responseText.split("\n");
-
-    for (i=0; hostipInfo.length >= i; i++) {
-        ipAddress = hostipInfo[i].split(":");
-        if ( ipAddress[0] == "IP" ) return ipAddress[1];
-    }
-    return false;*/
-}
-
 // SmoothScrolling, this works with a element that has a ID like: <p id="one">. To scroll to that element you can use a hyperlink such as <a href="#one">Scroll to one</a> This needs jqeury!
 $(function() {
     $('a[href*=#]:not([href=#])').click(function() {
@@ -169,13 +149,17 @@ function footer() { //This adds a footer that is always visible. use ID=footer. 
 function playmusic(file, type) // playmusic("music.mp3", "mp3"); This needs jquery!
 {
     $("body").append("<audio autoplay id='audioplayer'> <source src='" + file + "' type='audio/"+ type + "'></audio>");
-    delelement("audioplayer");
+    var aud = document.getElementById("audioplayer");
+    aud.onended = function()
+    {
+        delelement("audioplayer");
+    };
     return true;
 }
 
 function datenow(format) // Returns Day Month year. Syntax: datenow("-"); returns as for example: 1-1-2015 defaults: "-"
 {
-    if (format == null)
+    if (format == null) //fallback to default when there is no value.
     {
         format = "-";
     }
@@ -188,7 +172,7 @@ function datenow(format) // Returns Day Month year. Syntax: datenow("-"); return
 
 function timenow(format) // Returns Hour minute and seconds. Syntax: timenow(":"); returns as for example: 12:00:00 defaults: ":"
 {
-    if (format == null)
+    if (format == null) //fallback to default when there is no value.
     {
         format = ":";
     }
@@ -212,21 +196,26 @@ function addtoelementln(div, text) // Add to ID Element. and keeping the existin
 
 }
 
-function settoelement(div, text)
+function settoelement(div, text) // set text to a element and removing the old one.
 {
     var divvar = document.getElementById(div);
     divvar.innerHTML = text;
 }
 
-function clearelement(div) // clear te element.
+function clearelement(div) // clear the element.
 {
     var divvar = document.getElementById(div);
     divvar.innerHTML = "";
 }
 
-function delelement(div)
+function delelement(div) // delete the element completely
 {
     var divvar = document.getElementById(div);
     divvar.outerHTML = "";
     delete divvar;
+}
+
+function makeiframe(id, url, height, width)
+{
+    addtoelementln(id,"<iframe src='" + url + "' scrolling='no' frameborder='0' marginheight='0px' marginwidth='0px' height='" + height +"' width='" + width + "'></iframe>");
 }
