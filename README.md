@@ -1,4 +1,5 @@
-# MarfFrameWork
+![alt text](http://www.sweetnyancraft.nl/projects/mff/mfflogo.png "MarfFrameWork")
+
 What is marfframework?
 
 Marfframework is a javascript libary containing some jquery stuff, Fullscreen API, Push Api, Smooth Scrolling, Cookies, add text to a ID, Set text, Clear it, remove it.
