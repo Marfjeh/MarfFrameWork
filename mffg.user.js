@@ -1,11 +1,19 @@
+// ==UserScript==
+// @name        MarfFrameWork
+// @namespace	marf.com
+// @description MarfFrameWork
+// @include		http://*
+// @version     1.3.3
+// @grant       none
+// ==/UserScript==
 /* 
-MarfFrameWork 1.3.4
+MarfFrameWork 1.3.3
 This is a open-source project,
 Offical github: https://github.com/Marfjeh/MarfFrameWork
 LICENSE: GNU GENERAL PUBLIC LICENSE Version 2
  */
-var mjversie = "1.3.4";
-var mjdate = "20-1-2016";
+var mjversie = "1.3.3";
+var mjdate = "7-12-2015";
 var mjactive = 1;
 
 // useragent Dectector
@@ -187,8 +195,8 @@ function addtoelement(div, text) // Add to ID Element. and keeping the existing 
 {
     var divvar = document.getElementById(div);
     divvar.innerHTML = divvar.innerHTML + text;
-}
 
+}
 function addtoelementln(div, text) // Add to ID Element. and keeping the existing text.
 {
     var divvar = document.getElementById(div);
@@ -218,59 +226,4 @@ function delelement(div) // delete the element completely
 function makeiframe(id, url, height, width)
 {
     addtoelementln(id,"<iframe src='" + url + "' scrolling='no' frameborder='0' marginheight='0px' marginwidth='0px' height='" + height +"' width='" + width + "'></iframe>");
-}
-
-// Cookies it is old, but sometimes its useful.
-
-function makeCookie(name, value, exp)
-{
-	if (exp)
-	{
-		var date = new Date();
-        date.setTime(exp2.getTime()+(date*24*60*60*1000));
-		var expliredate = "; expires="+date.toGMTString();
-	}
-    else
-    {
-        var expliredate = "";
-    }
-    document.cookie = name + "=" + value + expliredate + ";path=/"
-}
-
-function readCookie(name)
-{
-    var namecookie = name + "=";
-    var cookieArray = document.cookie.split(";");
-
-    for (var i=0; i < cookieArray.length; i++)
-    {
-        var thiscookie = cookieArray[i];
-        while (thiscookie.charAt(0)==' ')
-        {
-            thiscookie = thiscookie.substring(1, thiscookie.length);
-        }
-
-        if (thiscookies.indexOf(namecookie) == 0)
-        {
-            return thiscookie.substring(namecookie.length, thiscookie.length);
-        }
-    }
-    return null;
-}
-
-function delCookie(name)
-{
-    makeCookie(name, "",-1);
-}
-
-function Getreq() //little php-like url checker for javascript.
-{
-    if (name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search))
-    {
-        return decodeURIComponent(name[1]);
-    }
-    else
-    {
-        return null;
-    }
 }
