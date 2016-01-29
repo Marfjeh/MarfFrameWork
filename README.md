@@ -16,6 +16,12 @@ Everything is documented in the .js file.
 
 To use my framework you can add this in your webpage. this prehosted version updates with the Latest Releases of this project.
 
+Development version:
 ```HTML
 <script src="http://www.sweetnyancraft.nl/projects/mff/mff.js"></script>
+```
+
+Minified version for production:
+```HTML
+<script src="http://www.sweetnyancraft.nl/projects/mff/mff.min.js"></script>
 ```
