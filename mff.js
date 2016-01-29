@@ -1,11 +1,11 @@
 /* 
-MarfFrameWork 1.3.4
+MarfFrameWork 1.3.5
 This is a open-source project,
 Offical github: https://github.com/Marfjeh/MarfFrameWork
 LICENSE: GNU GENERAL PUBLIC LICENSE Version 2
  */
-var mjversie = "1.3.4";
-var mjdate = "20-1-2016";
+var mjversie = "1.3.5";
+var mjdate = "29-1-2016";
 var mjactive = 1;
 
 // useragent Dectector
@@ -39,8 +39,8 @@ function useragent() {
 }
 // end
 
-function log( tekst ) {
-    console.log("["+ datenow("-") + " " + timenow(":") +" | MarfFrameWork Log] "+tekst);
+function log( text_string ) {
+    console.log("["+ datenow("-") + " " + timenow(":") +" | MarfFrameWork Log] "+ text_string);
 }
 
 function goUrl(URL){ window.location.href = URL; }
@@ -210,12 +210,10 @@ function clearelement(div) // clear the element.
 
 function delelement(div) // delete the element completely
 {
-    var divvar = document.getElementById(div);
-    divvar.outerHTML = "";
-    delete divvar;
+    $(div).remove();
 }
 
-function makeiframe(id, url, height, width)
+function makeIframe(id, url, height, width)
 {
     addtoelementln(id,"<iframe src='" + url + "' scrolling='no' frameborder='0' marginheight='0px' marginwidth='0px' height='" + height +"' width='" + width + "'></iframe>");
 }
@@ -263,7 +261,7 @@ function delCookie(name)
     makeCookie(name, "",-1);
 }
 
-function Getreq() //little php-like url checker for javascript.
+function getReq() //little php-like url checker for javascript.
 {
     if (name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search))
     {
