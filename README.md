@@ -2,11 +2,11 @@
 
 #Current build information
 
-<b>build date: 29-1-2016</b>
+<b>Build date: 29-1-2016</b>
 
-<b>Current version on github: 1.3.5</b>
+<b>Current version on Github: 1.3.5</b>
 
-<b>Latest Release Version: 1.3.5</b>
+<b>Latest release version: 1.3.5</b>
 
 
 #What is marfframework?
