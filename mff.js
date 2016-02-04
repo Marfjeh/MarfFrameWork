@@ -1,15 +1,16 @@
 /* 
-MarfFrameWork 1.3.5
+WARNING: API HAS CHANGED.
+MarfFrameWork 1.4.0
 This is a open-source project,
 Offical github: https://github.com/Marfjeh/MarfFrameWork
 LICENSE: GNU GENERAL PUBLIC LICENSE Version 2
  */
-var mjversie = "1.3.5";
-var mjdate = "29-1-2016";
+var mjversie = "1.4.0";
+var mjdate = "4-2-2016";
 var mjactive = 1;
 
 // useragent Dectector
-function useragent() {
+function userAgent() {
     var useragent = null;
     if(navigator.userAgent.indexOf("Chrome") != -1 )
     {
@@ -37,6 +38,23 @@ function useragent() {
     }
     return (useragent);
 }
+
+function detectMob() { 
+ if( navigator.userAgent.match(/Android/i)
+ || navigator.userAgent.match(/webOS/i)
+ || navigator.userAgent.match(/iPhone/i)
+ || navigator.userAgent.match(/iPad/i)
+ || navigator.userAgent.match(/iPod/i)
+ || navigator.userAgent.match(/BlackBerry/i)
+ || navigator.userAgent.match(/Windows Phone/i)
+ ){
+    return true;
+  }
+ else {
+    return false;
+  }
+}
+
 // end
 
 function log( text_string ) {
@@ -49,7 +67,7 @@ function About() { return("This page uses MarfFrameWork Version: " + mjversie + 
 
 function goBack() { window.history.back(); }
 
-function GoHome() { // Ga naar default home pagina
+function goHome() { // Ga naar default home pagina
     if (typeof window.home == 'function') { 
         window.home();
     } else if (document.all) { 
@@ -73,7 +91,7 @@ function fullscreen(element) { // fullscreen(document.documentElement); Notice: 
 
 // **** PUSH API START **** WIP
 
-function PushPermission()
+function pushPermission()
 {
 	if (window.webkitNotifications.checkPermission() == 0) { // 0 is PERMISSION_ALLOWED
     log ("Push permissions granted");
@@ -83,7 +101,7 @@ function PushPermission()
   }
 }
 
-function pushsupport()
+function pushSupport()
 {
 	if (window.webkitNotifications) {
  		log("Notifications are supported!");
@@ -113,7 +131,7 @@ $(function() {
     });
 });
 
-function footer() { //This adds a footer that is always visible. use ID=footer. like: <div id=footer></div>. This needs jqeury.
+function Footer() { //This adds a footer that is always visible. use ID=footer. like: <div id=footer></div>. This needs jqeury.
 
     $(window).bind("load", function () {
 
@@ -146,7 +164,7 @@ function footer() { //This adds a footer that is always visible. use ID=footer. 
 
     });
 }
-function playmusic(file, type) // playmusic("music.mp3", "mp3"); This needs jquery!
+function playMusic(file, type) // playmusic("music.mp3", "mp3"); This needs jquery!
 {
     $("body").append("<audio autoplay id='audioplayer'> <source src='" + file + "' type='audio/"+ type + "'></audio>");
     var aud = document.getElementById("audioplayer");
@@ -157,7 +175,7 @@ function playmusic(file, type) // playmusic("music.mp3", "mp3"); This needs jque
     return true;
 }
 
-function datenow(format) // Returns Day Month year. Syntax: datenow("-"); returns as for example: 1-1-2015 defaults: "-"
+function dateNow(format) // Returns Day Month year. Syntax: datenow("-"); returns as for example: 1-1-2015 defaults: "-"
 {
     if (format == null) //fallback to default when there is no value.
     {
@@ -170,7 +188,7 @@ function datenow(format) // Returns Day Month year. Syntax: datenow("-"); return
     return (day + format + month + format + year);
 }
 
-function timenow(format) // Returns Hour minute and seconds. Syntax: timenow(":"); returns as for example: 12:00:00 defaults: ":"
+function timeNow(format) // Returns Hour minute and seconds. Syntax: timenow(":"); returns as for example: 12:00:00 defaults: ":"
 {
     if (format == null) //fallback to default when there is no value.
     {
@@ -183,32 +201,32 @@ function timenow(format) // Returns Hour minute and seconds. Syntax: timenow(":"
     return (hour + format + mins + format + sec);
 }
 
-function addtoelement(div, text) // Add to ID Element. and keeping the existing text.
+function addtoElement(div, text) // Add to ID Element. and keeping the existing text.
 {
     var divvar = document.getElementById(div);
     divvar.innerHTML = divvar.innerHTML + text;
 }
 
-function addtoelementln(div, text) // Add to ID Element. and keeping the existing text.
+function addToelementln(div, text) // Add to ID Element. and keeping the existing text.
 {
     var divvar = document.getElementById(div);
     divvar.innerHTML = divvar.innerHTML + text + "<br>";
 
 }
 
-function settoelement(div, text) // set text to a element and removing the old one.
+function settoElement(div, text) // set text to a element and removing the old one.
 {
     var divvar = document.getElementById(div);
     divvar.innerHTML = text;
 }
 
-function clearelement(div) // clear the element.
+function clearElement(div) // clear the element.
 {
     var divvar = document.getElementById(div);
     divvar.innerHTML = "";
 }
 
-function delelement(div) // delete the element completely
+function delElement(div) // delete the element completely
 {
     $(div).remove();
 }
