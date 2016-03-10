@@ -8,6 +8,8 @@
 
 <b>Latest release version: 1.4.1</b>
 
+<b>Current Pre-Hosted Version: 1.4.1</b>
+
 
 #What is marfframework?
 
