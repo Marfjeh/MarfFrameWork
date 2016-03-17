@@ -27,6 +27,7 @@ Everything is documented in the .js file.
 
 To use my framework you can add this in your webpage. this prehosted version updates with the Latest Releases of this project.
 
+
 #Development version:
 ```HTML
 <script src="http://www.sweetnyancraft.nl/projects/mff/mff.js"></script>
@@ -36,3 +37,5 @@ To use my framework you can add this in your webpage. this prehosted version upd
 ```HTML
 <script src="http://www.sweetnyancraft.nl/projects/mff/mff.min.js"></script>
 ```
+<b>Notice: the pre-hosted version, will be moved to a new domain: marfprojects.nl.<br>
+sweetnyancraft.nl will no longer be used. in the console there's a warning. if you dont want that, download the framework it self.</b>
