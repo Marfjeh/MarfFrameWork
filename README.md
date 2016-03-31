@@ -30,12 +30,12 @@ To use my framework you can add this in your webpage. this prehosted version upd
 
 #Development version:
 ```HTML
-<script src="http://www.sweetnyancraft.nl/projects/mff/mff.js"></script>
+<script src="http://www.marfprojects.nl/projects/mff/mff.js"></script>
 ```
 
 #Minified version for production:
 ```HTML
-<script src="http://www.sweetnyancraft.nl/projects/mff/mff.min.js"></script>
+<script src="http://www.marfprojects.nl/projects/mff/mff.min.js"></script>
 ```
 <b>Notice: the pre-hosted version, will be moved to a new domain: marfprojects.nl.<br>
 sweetnyancraft.nl will no longer be used. in the console there's a warning. if you dont want that, download the framework it self.</b>
