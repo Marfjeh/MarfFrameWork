@@ -1,4 +1,4 @@
-#This project is discontinued! The new MarfFrameWork is coming, but under a diffrent name and ready for object oriented!
+#This project is discontinued! The new MarfFrameWork is coming, but under a different name and ready for object oriented!
 [The new project](https://github.com/Marfjeh/SNCUtils)
 
 
