@@ -1,3 +1,8 @@
+#This project is discontinued! The new MarfFrameWork is coming, but under a diffrent name and ready for object oriented!
+[The new project](https://github.com/Marfjeh/SNCUtils)
+
+
+----------------
 ![alt text](http://www.sweetnyancraft.nl/projects/mff/mfflogo.png "MarfFrameWork")
 
 #Current build information
